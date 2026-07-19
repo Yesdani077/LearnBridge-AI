@@ -1,0 +1,12 @@
+services:
+  api:
+    build: ./server
+    ports: ["4000:4000"]
+    env_file: ./server/.env
+  ai-service:
+    build: ./ai-service
+    ports: ["8000:8000"]
+  web:
+    build: ./client
+    ports: ["5173:80"]
+    depends_on: [api]
